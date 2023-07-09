@@ -250,8 +250,6 @@ def calcWER(df, spl):
 
 # %%
 # Split Train+Validation
-dts = 'jlvdoorn/atco2-asr'
-mdl = 'openai/whisper-large-v2'
 spl = 'train+validation'
 wsp = '-'.join(mdl.split('-')[1:])
 
@@ -264,8 +262,6 @@ calcWER(df, spl)
 
 # %%
 # Split Validation
-dts = 'jlvdoorn/atco2-asr'
-mdl = 'jlvdoorn/whisper-large-v2-atcosim'
 spl = 'validation'
 wsp = '-'.join(mdl.split('-')[1:])
 
