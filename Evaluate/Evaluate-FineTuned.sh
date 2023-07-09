@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=E-A2AS
+#SBATCH --job-name=E-AS
 #SBATCH --partition=compute
 #SBATCH --time=1-00:00:00
 #SBATCH --nodes=1
