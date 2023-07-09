@@ -2,8 +2,8 @@
 # # Infering Original and HF Whisper
 
 # %%
-dts = 'jlvdoorn/atcosim'
-mdl = 'jlvdoorn/whisper-large-v2-atcosim'
+dts = 'jlvdoorn/atco2-asr'
+mdl = 'jlvdoorn/whisper-large-v2-atco2-asr'
 spl = 'train+validation'
 wsp = '-'.join(mdl.split('-')[1:])
 
