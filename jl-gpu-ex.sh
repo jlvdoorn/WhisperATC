@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#SBATCH --job-name=J-EX3D
+#SBATCH --job-name=J-EX1D
 #SBATCH --partition=gpu
-#SBATCH --time=3-00:00:00
+#SBATCH --time=1-00:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --exclusive

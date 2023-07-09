@@ -2,7 +2,7 @@
 
 #SBATCH --job-name=J-16C1D
 #SBATCH --partition=compute
-#SBATCH --time=24:00:00
+#SBATCH --time=1-00:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=16
@@ -29,7 +29,6 @@ unset CONDA_SHLVL
 source "$(conda info --base)/etc/profile.d/conda.sh"
 
 conda activate /home/junzisun/env/jan
-cat /etc/hosts
 jupyter lab --ip=0.0.0.0 --port=8888
 conda deactivate
 

@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#SBATCH --job-name=J-32C5D
+#SBATCH --job-name=J-32C1D1G
 #SBATCH --partition=gpu
-#SBATCH --time=5-00:00:00
+#SBATCH --time=1-00:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=32
