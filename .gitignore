@@ -1,3 +1,7 @@
+# Fine-Tuned Models
+whisper-large-v2*/
+Evaluate/*.xlsx
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
