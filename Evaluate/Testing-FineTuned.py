@@ -33,6 +33,7 @@ df = pd.DataFrame(columns=['split', 'hyp-prmpt', 'hyp-clean', 'ref'])
 import re
 import whisper
 import torch
+import os
 
 def hf_to_whisper_states(text):
     text = re.sub('.layers.', '.blocks.', text)
@@ -56,7 +57,8 @@ def hf_to_whisper_states(text):
     text = re.sub('decoder.layer_norm.', 'decoder.ln.', text)
     return text
 
-hf_state_dict = torch.load('/scratch/junzisun/'+mdl.split('/')[-1]+'/pytorch_model.bin')    # pytorch_model.bin file
+os.system('git clone git@hf.co:'+mdl)
+hf_state_dict = torch.load('./'+mdl.split('/')[-1]+'/pytorch_model.bin')    # pytorch_model.bin file
 
 # Rename layers
 for key in list(hf_state_dict.keys())[:]:
