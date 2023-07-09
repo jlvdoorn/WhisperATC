@@ -29,5 +29,5 @@ unset CONDA_SHLVL
 source "$(conda info --base)/etc/profile.d/conda.sh"
 
 conda activate /home/junzisun/env/jan
-python Testing-FineTuned.py
+python Evaluate-Blank.py
 conda deactivate
