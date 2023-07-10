@@ -1,6 +1,7 @@
 # Fine-Tuned Models
 whisper-large-v2*/
 Evaluate/*.xlsx
+slurm-*.out
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
