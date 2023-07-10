@@ -29,3 +29,9 @@ The Graphs module exists to create some graphs for for example a report or a pre
 
 ## HuggingFace🤗
 All the datasets and models are available on the [HuggingFace🤗 Hub](https://huggingface.co/jlvdoorn).
+
+## Environment
+The repo contains a ```requirements.txt``` file. This can be used to create the needed conda environment with:
+```
+conda create --name whisper --file requirements.txt
+```
