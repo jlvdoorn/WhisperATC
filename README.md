@@ -28,10 +28,13 @@ The fine-tuning scripts are created to form a modular way of fine-tuning the bla
 The Graphs module exists to create some graphs for for example a report or a presentation.
 
 ## HuggingFace🤗
-All the datasets and models are available on the [HuggingFace🤗 Hub](https://huggingface.co/jlvdoorn).
+All the datasets (except the ANSP) and models are available on the [HuggingFace🤗 Hub](https://huggingface.co/jlvdoorn).
 
 ## Environment
 The repo contains a ```requirements.txt``` file. This can be used to create the needed conda environment with:
 ```
 conda create --name whisper --file requirements.txt
 ```
+
+## ANSP
+This module contains all the necesarry files to prepare (```CreateANSPDataset.ipynb```) and use (```Evaluate.ipynb```) the ANSP dataset for inference. Since it contains ANSP proprietary data, it is not made public.
