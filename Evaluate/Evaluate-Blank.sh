@@ -1,11 +1,12 @@
 #!/bin/bash
 
-#SBATCH --job-name=E-A2AS
-#SBATCH --partition=compute
+#SBATCH --job-name=E-B-A2AS
+#SBATCH --partition=gpu
 #SBATCH --time=1-00:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=32
+#SBATCH --gpus-per-task=1
 #SBATCH --mem=128GB
 #SBATCH --account=research-ae-co
 
@@ -29,5 +30,5 @@ unset CONDA_SHLVL
 source "$(conda info --base)/etc/profile.d/conda.sh"
 
 conda activate /home/junzisun/env/jan
-python Evaluate-FineTuned.py
+python Evaluate-Blank.py
 conda deactivate

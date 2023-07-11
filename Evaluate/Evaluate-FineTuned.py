@@ -2,7 +2,7 @@
 # # Infering Original and HF Whisper
 
 # %%
-dts = 'jlvdoorn/atco2-asr-atcosim'
+dts = 'jlvdoorn/atcosim'
 mdl = 'jlvdoorn/whisper-large-v2-atco2-asr-atcosim'
 spl = 'train+validation'
 wsp = '-'.join(mdl.split('-')[1:])
@@ -57,7 +57,11 @@ def hf_to_whisper_states(text):
     text = re.sub('decoder.layer_norm.', 'decoder.ln.', text)
     return text
 
-os.system('git clone git@hf.co:'+mdl)
+if not os.path.exists(mdl.split('/')[-1]):
+    os.system('git clone git@hf.co:'+mdl)
+else:
+    os.system('cd '+mdl.split('/')[-1]+' && git pull')
+    os.system('cd '+mdl.split('/')[-1]+' && git lfs pull')
 hf_state_dict = torch.load('./'+mdl.split('/')[-1]+'/pytorch_model.bin')    # pytorch_model.bin file
 
 # Rename layers
