@@ -2,10 +2,10 @@
 
 #SBATCH --job-name=J-16C1D
 #SBATCH --partition=compute
-#SBATCH --time=1-00:00:00
+#SBATCH --time=2:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --cpus-per-task=16
+#SBATCH --cpus-per-task=32
 #SBATCH --mem=128G
 #SBATCH --account=research-ae-co
 
