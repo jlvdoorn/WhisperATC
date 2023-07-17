@@ -1,8 +1,8 @@
 #!/bin/bash
 
-#SBATCH --job-name=E-B-A2AS
+#SBATCH --job-name=E-B-DAS
 #SBATCH --partition=gpu
-#SBATCH --time=1-00:00:00
+#SBATCH --time=04:00:00
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
 #SBATCH --cpus-per-task=32
