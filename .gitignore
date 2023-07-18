@@ -1,15 +1,12 @@
 # Fine-Tuned Models
 whisper-large-v2*/
-
 *.csv
 slurm-*.out
 *.pdf
 *.svg
-
 Evaluate-*-*.py
-
 backup
-
+~*.xlsx
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
