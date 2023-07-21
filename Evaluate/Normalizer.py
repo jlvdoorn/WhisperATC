@@ -87,6 +87,8 @@ def splitNumbersIntoDigits(text):
         
     return ' '.join(wrds)
 
+    # elements = re.split(' ', text)
+
 def removeSpokenSeparators(text):
     wrds = text.split()
     for word in wrds:
