@@ -127,6 +127,20 @@ def removeNonAlphaNum(text): # for removing all non alphanumeric characters (ex.
             text = text[0:x] + text[x+1:]
     return text
 
+def remove_multiples(string):
+    for word in string.split():
+
+        first = string.find(word)
+        last = string.rfind(word)
+        
+        substring = string[first:last+len(word)]
+        num = substring.count(word)
+        if num > 5:
+            new_substring = ' '.join([word for i in range(5)]).strip()
+            string = string.replace(substring, new_substring)
+            
+    return string
+
 def filterAndNormalize(text):   
     text = removeCharSet(text, '[', ']')
     text = removeCharSet(text, '<', '>')
@@ -141,6 +155,7 @@ def filterAndNormalize(text):
     # Running twice because the normalizer will replace 'zero five' by '05' but also replaces '05' by '5' (removing leading zeros).
     text = splitNumbersIntoDigits(text)
     text = splitGreetings(text)
+    #text = remove_multiples(text)
     text = text.lower()
     return text
 
