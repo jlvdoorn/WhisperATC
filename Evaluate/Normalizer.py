@@ -204,4 +204,4 @@ local_prompt_extension = [
     'victor one', 'victor two', 'victor three', 'victor four'
 ]
 
-common_texts = ['line up and wait', 'line up runway', 'wind is calm', 'wake turbulence', 'Airbus', 'Boeing', 'Embraer']
+common_texts = ['line up and wait', 'line up runway', 'wind is calm', 'wake turbulence', 'Airbus', 'Boeing', 'Embraer', 'RNP']
