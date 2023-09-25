@@ -39,10 +39,18 @@ All the datasets (except the ANSP) and models are available on the [HuggingFaceð
 
 ## Environment
 
-The repo contains a ```requirements.txt``` file. This can be used to create the needed conda environment with:
+The environment can be recreated using:
 
-```python
-conda create --name whisper --file requirements.txt
+```bash
+conda create --name whisper --file requirements_conda.txt
+```
+
+or
+
+```bash
+python -m venv whisper
+source whisper/bin/activate
+pip install -r requirements_pip.txt
 ```
 
 ## ANSP
