@@ -7,6 +7,20 @@ slurm-*.out
 Evaluate-*-*.py
 backup
 ~*.xlsx
+
+# Data Files Themselves
+ATCO2-ASR/*
+ATCOSIM/*
+
+atco2-asr*
+atcosim*
+
+7z/
+
+slurm*
+
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
