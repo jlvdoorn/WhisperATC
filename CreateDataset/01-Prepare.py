@@ -25,17 +25,17 @@ def prepare_atco2_asr():
     for xml_file in xml_files:
         with open(xml_file, 'r') as f:
             data = f.read()
-            
+
         trs = ''
         bs_data = BeautifulSoup(data, 'xml')
         text_unique = bs_data.find_all('text') # All transcriptions are in <text> tags
-        
+
         for tag in text_unique:
             trs += tag.text + ' '
-            
+
         with open(xml_file.replace('.xml', '.trs'), 'w') as f:
             f.write(trs)
-            
+
     # 02. Read INFO and extract radar data
     print('02. Read INFO and extract radar data')
 
@@ -44,7 +44,7 @@ def prepare_atco2_asr():
     for info_file in info_files:
         with open(info_file, 'r') as f:
             data = f.read().splitlines()
-            
+
         info = ''
         for line in data:
             if line.startswith('airport'):
@@ -58,28 +58,28 @@ def prepare_atco2_asr():
             if line.startswith('callsigns nearby'):
                 line_num = data.index(line)
                 break
-            
+
         callsigns = data[line_num+1:]
         callsigns_abbr = []
         callsigns_full = []
-        
+
         for callsign in callsigns:
             callsigns_abbr.append(callsign.split(':')[0].strip())
             if ':' in callsign:
                 for item in callsign.split(':')[1].split(' '):
                     callsigns_full.append(item)
-                    
+
         # remove duplicates from callsigns_abbr and callsigns_full
         callsigns_abbr = list(dict.fromkeys(callsigns_abbr))
         callsigns_full = list(dict.fromkeys(callsigns_full))
-        
+
         callsigns_abbr = ' '.join(callsigns_abbr)
         callsigns_full = ' '.join(callsigns_full)
 
         radar_dict = airport_icao + '\n' + airport_name + '\n' + channel + '\n' + wpts_nearby + '\n' + callsigns_abbr + '\n' + callsigns_full
         with open(info_file.replace('.info', '.conv.info'), 'w') as f:
             f.write(radar_dict)
-            
+
     # 03. Create Random Split
     print('03. Create Random Split')
 
@@ -99,12 +99,12 @@ def prepare_atco2_asr():
         os.system('cp ' + wav_file + ' ./ATCO2-ASR/DATA_SPLIT/train/')
         os.system('cp ' + wav_file.replace('.wav', '.trs') + ' ./ATCO2-ASR/DATA_SPLIT/train/'+wav_file.split('/')[-1].replace('.wav', '.txt'))
         os.system('cp ' + wav_file.replace('.wav', '.conv.info') + ' ./ATCO2-ASR/DATA_SPLIT/train/'+wav_file.split('/')[-1].replace('.wav', '.info'))
-        
+
     for wav_file in validation_wav_files:
         os.system('cp ' + wav_file + ' ./ATCO2-ASR/DATA_SPLIT/validation/')
         os.system('cp ' + wav_file.replace('.wav', '.trs') + ' ./ATCO2-ASR/DATA_SPLIT/validation/'+wav_file.split('/')[-1].replace('.wav', '.txt'))
         os.system('cp ' + wav_file.replace('.wav', '.conv.info') + ' ./ATCO2-ASR/DATA_SPLIT/validation/'+wav_file.split('/')[-1].replace('.wav', '.info'))
-        
+
     # 04. Create Metadata CSV
     print('04. Create Metadata CSV')
 
@@ -118,9 +118,9 @@ def prepare_atco2_asr():
             text = f.read()
         with open(wav_file.replace('.wav', '.info'), 'r') as f:
             info = f.read()
-            
+
         df.loc[i] = ['/'.join(wav_file.split('/')[-2:]), text, info]
-        
+
     df.to_csv('./ATCO2-ASR/DATA_SPLIT/metadata.csv', index=False)
 
     # 05. Create HuggingFace Dataset
@@ -156,13 +156,13 @@ def prepare_atcosim():
         else:
             with open(txt_file.replace('.txt', '.filtered.txt'), 'w') as f:
                 f.write(txt)
-            
-    # 02. Create Random Split 
+
+    # 02. Create Random Split
     print('02. Create Random Split')
 
     wav_files = glob.glob('./ATCOSIM/WAVdata/*/*/*.wav')
     txt_files = glob.glob('./ATCOSIM/TXTdata/*/*/*.filtered.txt')
-    
+
     os.system('mkdir ./ATCOSIM/DATA_SPLIT')
     os.system('mkdir ./ATCOSIM/DATA_SPLIT/train')
     os.system('mkdir ./ATCOSIM/DATA_SPLIT/validation')
@@ -176,7 +176,7 @@ def prepare_atcosim():
     for txt_file in train_txt_files:
         os.system('cp ' + txt_file + ' ./ATCOSIM/DATA_SPLIT/train/' + txt_file.split('/')[-1].replace('.filtered.txt', '.txt'))
         os.system('cp ' + txt_file.replace('TXTdata', 'WAVdata').replace('.filtered.txt', '.wav') + ' ./ATCOSIM/DATA_SPLIT/train/' + txt_file.split('/')[-1].replace('.filtered.txt', '.wav'))
-        
+
     for txt_file in validation_txt_files:
         os.system('cp ' + txt_file + ' ./ATCOSIM/DATA_SPLIT/validation/' + txt_file.split('/')[-1].replace('.filtered.txt', '.txt'))
         os.system('cp ' + txt_file.replace('TXTdata', 'WAVdata').replace('.filtered.txt', '.wav') + ' ./ATCOSIM/DATA_SPLIT/validation/' + txt_file.split('/')[-1].replace('.filtered.txt', '.wav'))
@@ -193,9 +193,9 @@ def prepare_atcosim():
         i = wav_files.index(wav_file)
         with open(wav_file.replace('.wav', '.txt'), 'r') as f:
             text = f.read()
-            
+
         df.loc[i] = ['/'.join(wav_file.split('/')[-2:]), text]
-        
+
     df.to_csv('./ATCOSIM/DATA_SPLIT/metadata.csv', index=False)
 
     # 04. Create HuggingFace Dataset
@@ -225,12 +225,12 @@ def prepare_atco2_asr_atcosim():
         os.system('cp ' + wav_file + ' ./ATCO2-ASR-ATCOSIM/train/'+wav_file.split('/')[-1])
         os.system('cp ' + wav_file.replace('.wav', '.txt') + ' ./ATCO2-ASR-ATCOSIM/train/')
         os.system('cp ' + wav_file.replace('.wav', '.info') + ' ./ATCO2-ASR-ATCOSIM/train/')
-        
+
     for wav_file in validation_wav:
         os.system('cp ' + wav_file + ' ./ATCO2-ASR-ATCOSIM/validation/'+wav_file.split('/')[-1])
         os.system('cp ' + wav_file.replace('.wav', '.txt') + ' ./ATCO2-ASR-ATCOSIM/validation/')
         os.system('cp ' + wav_file.replace('.wav', '.info') + ' ./ATCO2-ASR-ATCOSIM/validation/')
-        
+
     # 02. Create Metadata CSV
     print('02. Create Metadata CSV')
 
@@ -248,9 +248,9 @@ def prepare_atco2_asr_atcosim():
                 info = f.read()
         except:
             info = ''
-            
+
         df.loc[i] = ['/'.join(wav_file.split('/')[-2:]), text, info]
-        
+
     df.to_csv('./ATCO2-ASR-ATCOSIM/metadata.csv', index=False)
 
     # 03. Create HuggingFace Dataset
@@ -261,7 +261,12 @@ def prepare_atco2_asr_atcosim():
     # 04. Upload to HuggingFace Datasets Hub
     # print('04. Upload to HuggingFace Datasets Hub')
     # dataset.push_to_hub('ATCO2-ASR-ATCOSIM')
-    
-#prepare_atco2_asr()
+
+print("Preparing Datasets: ATCO2-ASR")
+prepare_atco2_asr()
+print("Preparing Datasets: ATCOSIM")
 prepare_atcosim()
+print("Preparing Datasets: ATCO2-ASR-ATCOSIM")
 prepare_atco2_asr_atcosim()
+
+print("Finished Preparing Datasets")
