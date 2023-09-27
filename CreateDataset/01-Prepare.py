@@ -225,18 +225,18 @@ def prepare_atco2_asr_atcosim():
         os.system('cp ' + wav_file + ' ./ATCO2-ASR-ATCOSIM/train/'+wav_file.split('/')[-1])
         os.system('cp ' + wav_file.replace('.wav', '.txt') + ' ./ATCO2-ASR-ATCOSIM/train/')
         # only ATCO2 dataset has .info files
-        try:
+        if 'ATCO2-ASR' in wav_file:	
             os.system('cp ' + wav_file.replace('.wav', '.info') + ' ./ATCO2-ASR-ATCOSIM/train/')
-        except:
+        else:
             pass
         
     for wav_file in validation_wav:
         os.system('cp ' + wav_file + ' ./ATCO2-ASR-ATCOSIM/validation/'+wav_file.split('/')[-1])
         os.system('cp ' + wav_file.replace('.wav', '.txt') + ' ./ATCO2-ASR-ATCOSIM/validation/')
         # only ATCO2 dataset has .info files
-        try:
+        if 'ATCO2-ASR' in wav_file:
             os.system('cp ' + wav_file.replace('.wav', '.info') + ' ./ATCO2-ASR-ATCOSIM/validation/')
-        except:
+        else:
             pass
         
     # 02. Create Metadata CSV
