@@ -270,6 +270,6 @@ def prepare_atco2_asr_atcosim():
     # print('04. Upload to HuggingFace Datasets Hub')
     # dataset.push_to_hub('ATCO2-ASR-ATCOSIM')
     
-#prepare_atco2_asr()
+prepare_atco2_asr()
 prepare_atcosim()
 prepare_atco2_asr_atcosim()
