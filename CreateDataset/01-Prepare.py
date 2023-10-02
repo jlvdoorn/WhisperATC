@@ -8,6 +8,8 @@ import datasets
 from datasets import Audio
 import re
 
+upload_to_hf = False
+
 ## ATCO2-ASR
 def prepare_atco2_asr():
     print('ATCO2-ASR')
@@ -123,14 +125,14 @@ def prepare_atco2_asr():
         
     df.to_csv('./ATCO2-ASR/DATA_SPLIT/metadata.csv', index=False)
 
-    # 05. Create HuggingFace Dataset
-    print('05. Create HuggingFace Dataset')
+    if upload_to_hf:
+        # 05. Create HuggingFace Dataset
+        print('05. Create HuggingFace Dataset')
+        dataset = datasets.load_dataset("audiofolder", data_dir = "./ATCO2-ASR/DATA_SPLIT")
 
-    # dataset = datasets.load_dataset("audiofolder", data_dir = "./ATCO2-ASR/DATA_SPLIT")
-
-    # 06. Upload to HuggingFace Datasets Hub
-    # print('06. Upload to HuggingFace Datasets Hub')
-    # dataset.push_to_hub('ATCO2-ASR')
+        # 06. Upload to HuggingFace Datasets Hub
+        print('06. Upload to HuggingFace Datasets Hub')
+        dataset.push_to_hub('ATCO2-ASR')
 
 ## ATCOSIM
 def prepare_atcosim():
@@ -198,14 +200,15 @@ def prepare_atcosim():
         
     df.to_csv('./ATCOSIM/DATA_SPLIT/metadata.csv', index=False)
 
-    # 04. Create HuggingFace Dataset
-    print('04. Create HuggingFace Dataset')
+    if upload_to_hf:
+        # 04. Create HuggingFace Dataset
+        print('04. Create HuggingFace Dataset')
 
-    # dataset = datasets.load_dataset("audiofolder", data_dir = "./ATCOSIM/DATA_SPLIT")
+        dataset = datasets.load_dataset("audiofolder", data_dir = "./ATCOSIM/DATA_SPLIT")
 
-    # 05. Upload to HuggingFace Datasets Hub
-    # print('05. Upload to HuggingFace Datasets Hub')
-    # dataset.push_to_hub('ATCOSIM')
+        # 05. Upload to HuggingFace Datasets Hub
+        print('05. Upload to HuggingFace Datasets Hub')
+        dataset.push_to_hub('ATCOSIM')
 
 ## ATCO2-ASR-ATCOSIM
 def prepare_atco2_asr_atcosim():
@@ -261,15 +264,16 @@ def prepare_atco2_asr_atcosim():
         
     df.to_csv('./ATCO2-ASR-ATCOSIM/metadata.csv', index=False)
 
-    # 03. Create HuggingFace Dataset
-    print('03. Create HuggingFace Dataset')
+    if upload_to_hf:
+        # 03. Create HuggingFace Dataset
+        print('03. Create HuggingFace Dataset')
 
-    # dataset = datasets.load_dataset("audiofolder", data_dir = "./ATCO2-ASR-ATCOSIM")
+        dataset = datasets.load_dataset("audiofolder", data_dir = "./ATCO2-ASR-ATCOSIM")
 
-    # 04. Upload to HuggingFace Datasets Hub
-    # print('04. Upload to HuggingFace Datasets Hub')
-    # dataset.push_to_hub('ATCO2-ASR-ATCOSIM')
-    
+        # 04. Upload to HuggingFace Datasets Hub
+        print('04. Upload to HuggingFace Datasets Hub')
+        dataset.push_to_hub('ATCO2-ASR-ATCOSIM')
+
 prepare_atco2_asr()
 prepare_atcosim()
 prepare_atco2_asr_atcosim()
