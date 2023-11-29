@@ -40,6 +40,10 @@ The fine-tuning scripts are created to form a modular way of fine-tuning the bla
 
 All the datasets and models are available on the [HuggingFace🤗 Hub](https://huggingface.co/jlvdoorn).
 
+## Demo
+
+An interactive demo can be found on [HuggingFace🤗 Spaces](https://jlvdoorn-whisperatc.hf.space/).
+
 ## Paper
 
 The paper can be found [here](http://resolver.tudelft.nl/uuid:8aa780bf-47b6-4f81-b112-29e23bc06a7d).
